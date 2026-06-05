@@ -1,36 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Quantum Earth</title>
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
 
-<header>
-    <h1>Quantum Earth</h1>
-    <p>Learn. Explore. Protect.</p>
-</header>
+<div class="app">
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="learn.html">Learn</a>
-    <a href="missions.html">Missions</a>
-    <a href="donate.html">WWF</a>
-    <a href="about.html">About</a>
-</nav>
+    <!-- SIDEBAR -->
 
-<section class="hero">
-    <h2>Change the World Through Learning and Action</h2>
-    <p>Earn points by learning about nature and completing environmental missions.</p>
-</section>
+    <aside class="sidebar">
 
-<section>
-    <h2>Your Progress</h2>
-    <p>Points: <span id="points">0</span></p>
-</section>
+        <div class="brand">
 
-<script src="script.js"></script>
+            <h1>Quantum Earth</h1>
+
+            <p>Learn • Explore • Protect</p>
+
+        </div>
+
+        <nav>
+
+            <button class="nav-btn" data-page="home">
+                Home
+            </button>
+
+            <button class="nav-btn" data-page="feed">
+                Feed
+            </button>
+
+            <button class="nav-btn" data-page="missions">
+                Missions
+            </button>
+
+            <button class="nav-btn" data-page="dashboard">
+                Dashboard
+            </button>
+
+            <button class="nav-btn" data-page="profile">
+                Profile
+            </button>
+
+            <button class="nav-btn" data-page="shop">
+                Shop
+            </button>
+
+            <button class="nav-btn" data-page="donate">
+                Donate
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="content">
+
+        <!-- HOME -->
+
+        <section id="home" class="page active">
+
+            <h2>Welcome to Quantum Earth</h2>
+
+            <p>
+                Complete conservation missions, learn about wildlife,
+                earn XP and share your discoveries.
+            </p>
+
+            <div class="hero-card">
+
+                <h3>Daily Challenge</h3>
+
+                <p>
+                    Photograph three native plants in your local area.
+                </p>
+
+                <button>
+                    Start Challenge
+                </button>
+
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <h3 id="xpDisplay">0</h3>
+
+                    <p>XP</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h3 id="tokenDisplay">0</h3>
+
+                    <p>Tokens</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h3 id="levelDisplay">1</h3>
+
+                    <p>Level</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FEED -->
+
+        <section id="feed" class="page">
+
+            <h2>Community Feed</h2>
+
+            <div class="create-post">
+
+                <input
+                    type="text"
+                    id="postTitle"
+                    placeholder="Post title">
+
+                <textarea
+                    id="postText"
+                    placeholder="Share your wildlife discovery..."></textarea>
+
+                <input
+                    type="file"
+                    id="postImage"
+                    accept="image/*">
+
+                <button id="createPostBtn">
+
+                    Create Post
+
+                </button>
+
+            </div>
+
+            <div id="feedContainer">
+
+            </div>
+
+        </section>
+
+        <!-- MISSIONS -->
+
+        <section id="missions" class="page">
+
+            <h2>Wildlife Missions</h2>
+
+            <div class="mission-card">
+
+                <h3>Plant A Tree</h3>
+
+                <p>Reward: 100 XP</p>
+
+                <button>
+                    Begin Mission
+                </button>
+
+            </div>
+
+            <div class="mission-card">
+
+                <h3>Beach Cleanup</h3>
+
+                <p>Reward: 150 XP</p>
+
+                <button>
+                    Begin Mission
+                </button>
+
+            </div>
+
+            <div class="mission-card">
+
+                <h3>Bird Survey</h3>
+
+                <p>Reward: 75 XP</p>
+
+                <button>
+                    Begin Mission
+                </button>
+
+            </div>
+
+            <hr>
+
+            <h3>Verification Centre</h3>
+
+            <video
+                id="camera"
+                autoplay
+                playsinline>
+            </video>
+
+            <canvas
+                id="canvas"
+                style="display:none;">
+            </canvas>
+
+            <img
+                id="photoPreview">
+
+            <div class="verification-buttons">
+
+                <button id="startCameraBtn">
+
+                    Start Camera
+
+                </button>
+
+                <button id="captureBtn">
+
+                    Capture Photo
+
+                </button>
+
+                <button id="verifyBtn">
+
+                    Verify Submission
+
+                </button>
+
+            </div>
+
+            <div id="verificationResult">
+
+            </div>
+
+        </section>
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard" class="page">
+
+            <h2>Explorer Dashboard</h2>
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-card">
+
+                    <h3>XP Progress</h3>
+
+                    <progress
+                        id="xpProgress"
+                        value="0"
+                        max="100">
+                    </progress>
+
+                </div>
+
+                <div class="dashboard-card">
+
+                    <h3>Missions Completed</h3>
+
+                    <p id="missionsCompleted">
+
+                        0
+
+                    </p>
+
+                </div>
+
+                <div class="dashboard-card">
+
+                    <h3>Wildlife Goals</h3>
+
+                    <ul>
+
+                        <li>Observe 10 birds</li>
+                        <li>Plant 5 trees</li>
+                        <li>Complete 3 cleanups</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- PROFILE -->
+
+        <section id="profile" class="page">
+
+            <h2>Your Profile</h2>
+
+            <div class="profile-card">
+
+                <div class="avatar">
+
+                    Avatar
+
+                </div>
+
+                <h3>Explorer</h3>
+
+                <p>Level 1</p>
+
+            </div>
+
+            <div class="badges">
+
+                <h3>Badges</h3>
+
+                <div class="badge-list">
+
+                    <div class="badge">
+                        Tree Planter
+                    </div>
+
+                    <div class="badge">
+                        Wildlife Watcher
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="certificates">
+
+                <h3>Certificates</h3>
+
+                <button>
+
+                    Download Certificate
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- SHOP -->
+
+        <section id="shop" class="page">
+
+            <h2>Avatar Shop</h2>
+
+            <div class="shop-grid">
+
+                <div class="shop-item">
+
+                    <h3>Explorer Hat</h3>
+
+                    <p>100 Tokens</p>
+
+                    <button>
+
+                        Buy
+
+                    </button>
+
+                </div>
+
+                <div class="shop-item">
+
+                    <h3>Research Backpack</h3>
+
+                    <p>250 Tokens</p>
+
+                    <button>
+
+                        Buy
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- DONATE -->
+
+        <section id="donate" class="page">
+
+            <h2>Support Conservation</h2>
+
+            <p>
+
+                Support environmental projects
+                and wildlife protection.
+
+            </p>
+
+            <button>
+
+                Donate
+
+            </button>
+
+            <div class="impact-card">
+
+                <h3>Community Impact</h3>
+
+                <p>Total Donations: $0</p>
+
+                <p>Trees Funded: 0</p>
+
+                <p>Missions Completed: 0</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
 </body>
 </html>
